@@ -14,4 +14,6 @@ gem 'selenium-webdriver'
 
 gem 'sinatra'
 
+gem 'shotgun'
+
 gem 'simplecov'
