@@ -1,4 +1,6 @@
 
+# Bringing the content of the 'app.rb' file
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
 # Requiring all the testing gems
 require 'capybara'
 require 'capybara/rspec'

@@ -11,3 +11,5 @@ gem 'rspec', group: :test
 gem 'capybara', group: :test
 
 gem 'selenium-webdriver'
+
+gem 'sinatra'
