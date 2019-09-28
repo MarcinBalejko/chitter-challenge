@@ -1,6 +1,8 @@
 require 'sinatra/base'
 
 class Chitter < Sinatra::Base
+    enable :sessions, :method_override
+    register Sinatra::Flash
 
 get '/' do
    'Chitter Challenge'
