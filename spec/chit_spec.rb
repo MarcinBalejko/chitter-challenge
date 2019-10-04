@@ -9,14 +9,21 @@ describe Chit do
             end
         end
         describe '.all' do
-            it 'returns a list of chits' do
-              chits = Chit.all
+            it 'returns a list of bookmarks' do
+              connection = PG.connect(dbname: 'chitter_test')
           
-              expect(chits).to include "The first chit"
-              expect(chits).to include "The second chit"
-              expect(chits).to include "The third chit"
+              # Add the test data
+              connection.exec("INSERT INTO chits (text) VALUES ('The first chit');")
+              connection.exec("INSERT INTO chits (text) VALUES ('The second chit');")
+              connection.exec("INSERT INTO chits (text) VALUES ('The third chit');")
+          
+              bookmarks = Chit.all
+          
+              expect(bookmarks).to include('The first chit')
+              expect(bookmarks).to include('The second chit')
+              expect(bookmarks).to include('The third chit')
             end
           end
-          
+
 end
 
