@@ -1,6 +1,6 @@
 feature 'Viewing bookmarks' do
     scenario 'A user can see chits' do
-      visit('/chitts')
+      visit('/chits')
   
       expect(page).to have_content "The first chit"
       expect(page).to have_content "The second chit"

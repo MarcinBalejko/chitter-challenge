@@ -10,8 +10,8 @@ class Chitter < Sinatra::Base
         erb :'main_page'
     end
 
-    get '/chitts' do
-        @chitts = Chit.all
+    get '/chits' do
+        @chits = Chit.all
         erb :'chitts/index'
     end
 
