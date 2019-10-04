@@ -1,4 +1,5 @@
 require 'chit'
+require 'database_helpers'
 
 describe Chit do
     let(:chit_1) { Chit.new(text: 'The first Chit') }
@@ -24,6 +25,14 @@ describe Chit do
               expect(bookmarks).to include('The third chit')
             end
           end
+          describe '.create' do
+            it 'creates a new bookmark' do
+              chit = Chit.create(text: 'The test chit').first
+          
+              expect(chit['text']).to eq 'The test chit'
+            end
+          end
+
 
 end
 

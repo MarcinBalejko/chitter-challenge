@@ -19,10 +19,8 @@ class Chitter < Sinatra::Base
         erb :'chits/new'
     end
 
-    post '/chits' do
-        text = params['text']
-        connection = PG.connect(dbname: 'chitter_test')
-        connection.exec("INSERT INTO chits (text) VALUES('#{text}');")
+    post '/chits/new' do
+        Chit.create(text: params[:text])
         redirect '/chits'
     end
     
