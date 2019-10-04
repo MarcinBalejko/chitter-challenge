@@ -12,7 +12,7 @@ class Chitter < Sinatra::Base
 
     get '/chits' do
         @chits = Chit.all
-        erb :'chitts/index'
+        erb :'chits/index'
     end
 
     run! if app_file == $0

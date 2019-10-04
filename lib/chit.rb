@@ -1,8 +1,8 @@
 
 class Chit
-    attr_reader :title
-    def initialize(title:)
-        @title = title
+    attr_reader :text
+    def initialize(text:)
+        @text = text
     end
 
     def self.all
