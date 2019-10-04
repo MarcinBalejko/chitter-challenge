@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/flash'
+require './lib/chit'
 
 class Chitter < Sinatra::Base
     enable :sessions, :method_override
@@ -7,6 +8,11 @@ class Chitter < Sinatra::Base
 
     get '/' do
         erb :'main_page'
+    end
+
+    get '/chitts' do
+        @chitts = Chit.all
+        erb :'chitts/index'
     end
 
     run! if app_file == $0
