@@ -1,3 +1,4 @@
+require 'pg'
 
 class Chit
     attr_reader :text
@@ -6,11 +7,9 @@ class Chit
     end
 
     def self.all
-        [
-            "The first chit",
-            "The second chit",
-            "The third chit"
-        ]
+        connection = PG.connect(dbname: 'chitter')
+        result = connection.exec('SELECT * FROM chits;')
+        result.map { |chit| chit['text'] }
     end
     
 end

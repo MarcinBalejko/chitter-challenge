@@ -6,11 +6,13 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 # gem "rails"
 
-gem 'rspec'
+gem 'capybara', group: :test
 
-gem 'capybara'
+gem 'rspec', group: :test
 
 gem 'selenium-webdriver'
+
+gem 'pg'
 
 gem 'sinatra'
 
