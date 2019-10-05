@@ -1,31 +1,34 @@
 require 'pg'
 
 class Chit
-    attr_reader :text
-    def initialize(text:)
+    attr_reader :id, :text
+    def initialize(id:, text:)
+        @id = id
         @text = text
     end
 
     def self.all
         if ENV['ENVIRONMENT'] == 'test'
-            connection = PG.connect(dbname: 'chitter_test')
+          connection = PG.connect(dbname: 'chitter_test')
         else
-            connection = PG.connect(dbname: 'chitter')
+          connection = PG.connect(dbname: 'chitter')
         end
-
-        chits = connection.exec('SELECT * FROM chits;')
-        chits.map { |chit| chit['text'] }
+        result = connection.exec("SELECT * FROM chits")
+        result.map do |chit|
+          Chit.new(id: chit['id'], text: chit['text'])
+        end
     end
 
     def self.create(text:)
+        
         if ENV['ENVIRONMENT'] == 'test'
           connection = PG.connect(dbname: 'chitter_test')
         else
           connection = PG.connect(dbname: 'chitter')
         end
-      
-        connection.exec("INSERT INTO chits (text) VALUES('#{text}') RETURNING id, text;")
-    end
+        result = connection.exec("INSERT INTO chits (text) VALUES('#{text}') RETURNING id, text;")
+        Chit.new(id: result[0]['id'], text: result[0]['title'])
+      end
 
 
     

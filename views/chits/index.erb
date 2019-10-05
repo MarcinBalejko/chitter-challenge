@@ -1,5 +1,9 @@
-<ul>
+ <ul>
   <% @chits.each do |chit| %>
-    <li><%= chit %></li>
+    <li>
+      <a>
+        <%= chit.text %>
+      </a>
+    </li>
   <% end %>
 </ul>
