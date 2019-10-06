@@ -1,30 +1,80 @@
 require 'sinatra/base'
 require 'sinatra/flash'
-require './lib/chit'
+require 'uri'
+require_relative './lib/chit'
+require_relative './database_connection_setup.rb'
+require_relative './lib/user'
+require_relative './database_connection_setup'
 
 class Chitter < Sinatra::Base
-    enable :sessions, :method_override
-    register Sinatra::Flash
+  enable :sessions, :method_override
+  register Sinatra::Flash
 
-    get '/' do
-        erb :'main_page'
+  get '/' do
+    erb :'main_page'
+  end
+
+  get '/chits' do
+    @user = User.find(id: session[:user_id])
+    @chits = Chit.all
+    erb :'chits/index'
+  end
+
+  get '/chits/new' do
+    erb :'chits/new'
+  end
+
+  post '/chits' do
+    Chit.create(text: params[:text])
+    redirect '/chits'
+  end
+
+  delete '/chits/:id' do
+    Chit.delete(id: params[:id])
+    redirect '/chits'
+  end
+
+  get '/chits/:id/edit' do
+    @chit = Chit.find(id: params[:id])
+    erb :"chits/edit"
+  end
+
+  patch '/chits/:id' do
+    Chit.update(id: params[:id], text: params[:text])
+    redirect('/chits')
+  end
+
+  get '/users/new' do
+    erb :"users/new"
+  end
+
+  post '/users' do
+    user = User.create(email: params['email'], password: params['password'])
+    session[:user_id] = user.id
+    redirect '/chits'
+  end
+
+  get '/sessions/new' do
+    erb :"sessions/new"
+  end
+
+  post '/sessions' do
+    user = User.authenticate(email: params[:email], password: params[:password])
+    if user
+      session[:user_id] = user.id
+      redirect('/chits')
+    else
+      flash[:notice] = 'Please check your email or password.'
+      redirect('/sessions/new')
     end
+  end
 
-    get '/chits' do
-        @chits = Chit.all
-        erb :'chits/index'
-    end
+  post '/sessions/destroy' do
+    session.clear
+    #flash[:notice] = 'You have signed out.'
+    redirect('/')
+  end
 
-    get'/chits/new' do
-        erb :'chits/new'
-    end
 
-    post '/chits/new' do
-        Chit.create(text: params[:text])
-        redirect '/chits'
-    end
-    
-
-    run! if app_file == $0
+  run! if app_file == $0
 end
-
