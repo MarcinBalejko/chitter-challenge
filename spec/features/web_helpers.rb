@@ -8,11 +8,11 @@ end
 
 def add_one_chit
     click_button 'Add Chit'
-    fill_in('text', with: 'Test Chit')
+    fill_in('text', with: 'Test Chit 1')
     click_button('Submit')
 end
 
-def add_three_bookmarks
+def add_three_chits
      click_button 'Add Bookmark'
      fill_in('text', with: 'Test Chit 1')
      click_button('Submit')
