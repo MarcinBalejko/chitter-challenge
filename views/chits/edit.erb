@@ -4,24 +4,26 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
-        <link href="<%= url('/style_bookmarks_new.css') %>" rel="stylesheet" type="text/css" >
+        <link href="<%= url('/style_bookmarks_edit.css') %>" rel="stylesheet" type="text/css" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>New Chit</title>
     </head>
     <body style="background-image: url(https://brokeassstuart-9uzlt3u.netdna-ssl.com/wp-content/pictsnShit/2013/04/bookmark-wallpaper.jpg?fbclid=IwAR3qksDvjy5w9erKWj69rHincMExY3QCE4J8bC_k90qtKhUFncW_MBQpHDk);">
         <div class="col-md-5 card mx-auto" id="col-md-5" >
+        <br>
             <div class="card-container" >
-            <br>
                 <h3 class="card-header" > Chitter </h3>
                 <div class="card-body">
-                    <h1> Add a new Chit </h1>
+                    <h1> Edit your Chit </h1>
                     <h2> <%= flash[:notice] %> </h2>
                     <br>
                     <span>
-                      <form action="/chits" method="post" >
-                        <input type="text" name="text" placeholder="Text" id="text" />
-                        <input type="submit" value="Submit" class="btn btn-warning" id="submit" />
+                      <form action="/chits/<%= @chit.id %>" method="post" >
+                        <input type="hidden" name="_method" value="PATCH" />
+                        
+                        <input type="text" name="text" value="<%= @chit.text %>" id="title" style="font-size: 20px; font-family: 'Cookie', cursive;" />
+                        <input type="submit" value="Submit" class="btn btn-warning" id="submit" style="font-size: 20px; font-family: 'Cookie', cursive; margin-top: 7px;" />
                       </form>
                     </span>
                 </div>
