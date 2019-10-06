@@ -13,15 +13,15 @@ def add_one_chit
 end
 
 def add_three_chits
-     click_button 'Add Bookmark'
+     click_button 'Add Chit'
      fill_in('text', with: 'Test Chit 1')
      click_button('Submit')
 
-     click_button 'Add Bookmark'
+     click_button 'Add Chit'
      fill_in('text', with: 'Test Chit 2')
      click_button('Submit')
 
-     click_button 'Add Bookmark'
+     click_button 'Add Chit'
      fill_in('text', with: 'Test Chit 3')
      click_button('Submit')
 end
