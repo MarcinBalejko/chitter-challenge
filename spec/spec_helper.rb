@@ -8,8 +8,9 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
-# Telling Capybara to talk to BookmarkManager
+# Telling Capybara to talk to Chitter
 Capybara.app = Chitter
+require 'features/web_helpers'
 require 'simplecov'
 SimpleCov.start
 
