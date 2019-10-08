@@ -16,7 +16,9 @@ class Chitter < Sinatra::Base
 
   get '/chits' do
     @user = User.find(id: session[:user_id])
+    #@user_email = @user.email
     @chits = Chit.all
+    
     erb :'chits/index'
   end
 
@@ -25,7 +27,9 @@ class Chitter < Sinatra::Base
   end
 
   post '/chits' do
-    Chit.create(text: params[:text])
+    @user = User.find(id: session[:user_id])
+    @user_email = @user.email
+    Chit.create(text: params[:text], author_id: session[:user_id], author_email: @user_email)
     redirect '/chits'
   end
 
@@ -40,7 +44,9 @@ class Chitter < Sinatra::Base
   end
 
   patch '/chits/:id' do
-    Chit.update(id: params[:id], text: params[:text])
+    @user = User.find(id: session[:user_id])
+    @user_email = @user.email
+    Chit.update(id: params[:id], text: params[:text], author_id: session[:user_id], author_email: @user_email)
     redirect('/chits')
   end
 
