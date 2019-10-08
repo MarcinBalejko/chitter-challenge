@@ -36,13 +36,20 @@ h3{
 }
 
 span{
-    display: inline;
+    align-items: center;
+    display: center;
+}
+
+#name{
+    font-size: 20px;
+    font-family: 'Cookie';
+    font-style: cursive; 
 }
 
 #email{
     font-size: 20px;
-     font-family: 'Cookie';
-     font-style: cursive;    
+    font-family: 'Cookie';
+    font-style: cursive;    
 }
 
 #password{
