@@ -17,8 +17,8 @@ task :setup do
 
     connection = PG.connect(dbname: database)
     
-    connection.exec("CREATE TABLE users (id SERIAL PRIMARY KEY, email VARCHAR(60), password VARCHAR(140));")
-    connection.exec("CREATE TABLE chits(id SERIAL PRIMARY KEY, text VARCHAR(240), author_email VARCHAR(60), author_id INTEGER REFERENCES users (id));")  
+    connection.exec("CREATE TABLE users (id SERIAL PRIMARY KEY, email VARCHAR(60), password VARCHAR(140), name VARCHAR(60));")
+    connection.exec("CREATE TABLE chits(id SERIAL PRIMARY KEY, text VARCHAR(240), author_email VARCHAR(60), author_name VARCHAR(60), author_id INTEGER REFERENCES users (id));")  
   end
 end
 

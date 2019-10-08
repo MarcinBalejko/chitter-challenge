@@ -1,1 +1,1 @@
-CREATE TABLE chits(id SERIAL PRIMARY KEY, text VARCHAR(240));
+CREATE TABLE chits(id SERIAL PRIMARY KEY, text VARCHAR(240), author_email VARCHAR(60), author_name VARCHAR(60), author_id INTEGER REFERENCES users (id))
