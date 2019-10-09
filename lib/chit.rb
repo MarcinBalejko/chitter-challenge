@@ -47,6 +47,4 @@ class Chit
     Chit.new(id: result[0]['id'], text: result[0]['text'], time: result[0]['time'], author_id: result[0]['author_id'], author_email: result[0]['author_email'], author_name: result[0]['author_name'])
   end
 
-
-
 end

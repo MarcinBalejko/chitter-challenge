@@ -46,8 +46,9 @@ class Chitter < Sinatra::Base
   patch '/chits/:id' do
     @user = User.find(id: session[:user_id])
     @time_updated = TimeCalculator.show_time
-    Chit.update(id: params[:id], text: params[:text], time: @time_updated,  author_id: session[:user_id], author_email: @user.email, author_name: @user.name)
-    redirect('/chits')   
+    Chit.update(id: params[:id], text: params[:text], time: (@time_updated + ' (edited)'),  author_id: session[:user_id], author_email: @user.email, author_name: @user.name)
+    redirect('/chits')   # (+ put time in other place, update db,
+    # test for time, update tests, wall page for each user, delete edit from the main page, design and build UI)
   end
 
   get '/users/new' do
