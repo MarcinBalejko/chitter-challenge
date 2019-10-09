@@ -13,9 +13,12 @@
       <div class="col-md-6 card mx-auto big-card">
         <br>
         <h3 id="your-bookmarks" class="card-header">
-          Your Chits
+          Recent Chits
         </h3>
         <span>
+        <form action="/chits/my" method="get"> 
+          <input type="submit" class="submitLink" value="My Chits" style="font-size: 30px;  font-family: 'Cookie', cursive;" />
+        </form>
         <form action="/chits/new" method="get"> 
           <input type="submit" class="submitLink" value="Add Chit" style="font-size: 30px;  font-family: 'Cookie', cursive;" />
         </form>
