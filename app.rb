@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require 'uri'
 require_relative './lib/chit'
+require_relative './lib/timecalculator'
 require_relative './database_connection_setup.rb'
 require_relative './lib/user'
 require_relative './database_connection_setup'
@@ -27,9 +28,8 @@ class Chitter < Sinatra::Base
 
   post '/chits' do
     @user = User.find(id: session[:user_id])
-    @user_email = @user.email
-    @user_name = @user.name
-    Chit.create(text: params[:text], author_id: session[:user_id], author_email: @user_email, author_name: @user_name)
+    @time = TimeCalculator.show_time
+    Chit.create(text: params[:text], time: @time, author_id: session[:user_id], author_email: @user.email, author_name: @user.name)
     redirect '/chits'
   end
 
@@ -45,10 +45,9 @@ class Chitter < Sinatra::Base
 
   patch '/chits/:id' do
     @user = User.find(id: session[:user_id])
-    @user_email = @user.email
-    @user_name = @user.name
-    Chit.update(id: params[:id], text: params[:text], author_id: session[:user_id], author_email: @user_email, author_name: @user_name)
-    redirect('/chits')
+    @time_updated = TimeCalculator.show_time
+    Chit.update(id: params[:id], text: params[:text], time: @time_updated,  author_id: session[:user_id], author_email: @user.email, author_name: @user.name)
+    redirect('/chits')   
   end
 
   get '/users/new' do
@@ -66,7 +65,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/sessions' do
-    user = User.authenticate(email: params[:email], password: params[:password], name: params[:name])
+    user = User.authenticate(email: params[:email], password: params[:password])
     if user
       session[:user_id] = user.id
       redirect('/chits')
