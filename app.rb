@@ -22,6 +22,38 @@ class Chitter < Sinatra::Base
     erb :'chits/index'
   end
 
+
+    #########################
+
+  get '/chits/my' do
+    @user = User.find(id: session[:user_id])
+    @chits = Chit.all
+
+    erb :'chits/my_chits'
+  end
+
+  patch '/chits/my/:id' do
+    @user = User.find(id: session[:user_id])
+    @time_updated = TimeCalculator.show_time
+    Chit.update(id: params[:id], text: params[:text], time: (@time_updated + ' (edited)'),  author_id: session[:user_id], author_email: @user.email, author_name: @user.name)
+    redirect('/chits/my')   # (+ put time in other place, 
+    # test for time, update tests, wall page for each user, delete edit from the main page, design and build UI)
+  end
+
+  delete '/chits/my/:id' do
+    Chit.delete(id: params[:id])
+    redirect '/chits/my'
+  end
+
+
+
+  ###############################
+
+
+
+
+
+
   get '/chits/new' do
     erb :'chits/new'
   end
@@ -47,7 +79,7 @@ class Chitter < Sinatra::Base
     @user = User.find(id: session[:user_id])
     @time_updated = TimeCalculator.show_time
     Chit.update(id: params[:id], text: params[:text], time: (@time_updated + ' (edited)'),  author_id: session[:user_id], author_email: @user.email, author_name: @user.name)
-    redirect('/chits')   # (+ put time in other place, update db,
+    redirect('/chits')   # (+ put time in other place, 
     # test for time, update tests, wall page for each user, delete edit from the main page, design and build UI)
   end
 
