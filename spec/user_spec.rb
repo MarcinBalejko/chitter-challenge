@@ -38,19 +38,19 @@ describe User do
   describe '.authenticate' do
     it 'returns a user given a correct username and password, if one exists' do
       user = User.create(email: 'test@example.com', password: 'password123', name: 'User')
-      authenticated_user = User.authenticate(email: 'test@example.com', password: 'password123', name: 'User')
+      authenticated_user = User.authenticate(email: 'test@example.com', password: 'password123')
 
       expect(authenticated_user.id).to eq user.id
     end
     it 'returns nil given an incorrect email address' do
       user = User.create(email: 'test@example.com', password: 'password123', name: 'User')
   
-      expect(User.authenticate(email: 'nottherightemail@me.com', password: 'password123', name: 'User')).to be_nil
+      expect(User.authenticate(email: 'nottherightemail@me.com', password: 'password123')).to be_nil
     end
     it 'returns nil given an incorrect password' do
       user = User.create(email: 'test@example.com', password: 'password123', name: 'User')
   
-      expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword', name: 'User')).to be_nil
+      expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
     end
   end
 
