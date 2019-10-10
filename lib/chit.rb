@@ -1,6 +1,7 @@
 require_relative 'database_connection'
 require 'uri'
 require_relative 'user'
+require_relative './comment'
 
 class Chit
   attr_reader :id, :text, :time, :author_id, :author_email, :author_name
@@ -45,6 +46,10 @@ class Chit
   def self.find(id:)
     result = DatabaseConnection.query("SELECT * FROM chits WHERE id = #{id}")
     Chit.new(id: result[0]['id'], text: result[0]['text'], time: result[0]['time'], author_id: result[0]['author_id'], author_email: result[0]['author_email'], author_name: result[0]['author_name'])
+  end
+
+  def comments(comment_class = Comment)
+    comment_class.where(chit_id: id)
   end
 
 end
