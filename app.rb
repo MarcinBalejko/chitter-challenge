@@ -22,8 +22,7 @@ class Chitter < Sinatra::Base
     erb :'chits/index'
   end
 
-
-    #########################
+######################### MY CHITS ###############
 
   get '/chits/my' do
     @user = User.find(id: session[:user_id])
@@ -32,25 +31,37 @@ class Chitter < Sinatra::Base
     erb :'chits/my_chits'
   end
 
-  patch '/chits/my/:id' do
-    @user = User.find(id: session[:user_id])
-    @time_updated = TimeCalculator.show_time
-    Chit.update(id: params[:id], text: params[:text], time: (@time_updated + ' (edited)'),  author_id: session[:user_id], author_email: @user.email, author_name: @user.name)
-    redirect('/chits/my')   # (+ put time in other place, 
-    # test for time, update tests, wall page for each user, delete edit from the main page, design and build UI)
-  end
-
   delete '/chits/my/:id' do
+    Comment.delete_with_chit(id: params[:id])
     Chit.delete(id: params[:id])
     redirect '/chits/my'
   end
 
 
+  ########## C O M M E N T S #####################
+
+  get '/chits/:id/comments/new' do
+    @chit_id = params[:id]
+    erb :'comments/new'
+  end
+
+  post '/chits/:id/comments' do
+    @user = User.find(id: session[:user_id])
+    @chits = Chit.all
+    @author = @user.name
+    Comment.create(chit_id: params[:id], text: params[:comment], comment_author: @author)
+    redirect '/chits'
+  end
+
+  delete '/chits/:id/comments' do
+    
+    Comment.delete(id: params[:id])
+    redirect '/chits'
+  end
+
+
 
   ###############################
-
-
-
 
 
 
@@ -66,6 +77,7 @@ class Chitter < Sinatra::Base
   end
 
   delete '/chits/:id' do
+    Comment.delete_with_chit(id: params[:id])
     Chit.delete(id: params[:id])
     redirect '/chits'
   end

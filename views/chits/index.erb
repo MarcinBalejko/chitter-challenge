@@ -47,9 +47,33 @@
                           </span>
                       </ul> 
                   </li>
+
+                  <li class="list-group-item">
+                    Comments:
+                    <% if chit.comments.length > 0 %>
+                      <ul class="comment-style">
+                        <% chit.comments.each do |comment| %>
+                          <span>
+                            <li class="comment-position">   
+                              <form action="/chits/<%= comment.id %>/comments" method="post">
+                                <%= comment.comment_author %>~Says: <%= comment.text %>
+                                <input type='hidden' name='_method' value='DELETE' />
+                                <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
+                              </form>
+                            </li>
+                          </span>
+                        <% end %>
+                      </ul>
+                    <% end %> 
+                  </li>
              
                   <div id="buttons" class="card-body">
                     <span>
+                      <a href="#" class="card-link">
+                        <form action="/chits/<%= chit.id %>/comments/new" method="get">
+                          <input type="submit" class="submitLink" value="Comment" style="font-size: 20px; font-family: 'Cookie', cursive;"/>
+                        </form>
+                      </a>
                       <a  href="#" class="card-link">
                         <form action="/chits/<%= chit.id %>/edit" method="get">
                           <input type="submit" class="submitLink" value="Edit" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
