@@ -2,35 +2,68 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
-        <link href="<%= url('/style_sign_up.css') %>" rel="stylesheet" type="text/css" >
+       <!-- > <link href="<%= url('/style_main_page.css') %>" rel="stylesheet" type="text/css" > -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Sign up</title>
+        <title>Main page</title>
     </head>
-    <body style="background-image: url(https://www.artycraftykids.com/wp-content/uploads/2017/08/Bookmarks-1-2.jpg);">
-        <div class="col-md-5 card mx-auto" id="col-md-5" >
-            <div class="card-container">
+    <body style="background-image: url(http://www.cashadvance6online.com/data/archive/img/3110503676.jpeg);">
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <br>
+        <br>
+        <a class="navbar-brand" href="#">
+        Chitter
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Sign up <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sessions/new">Sign in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+        <br>
+
+    <div class="col-md-5 card mx-auto" id="col-md-5" style=" opacity: 0.71;" >
+        <div class="card-container">
+            <br>
+            <h3 class="card-header"> Chitter </h3>
+            <div class="card-body">
+                <h1> Join Chitter </h1>
+                <h2> <%= flash[:notice] %> </h2>
                 <br>
-                <h3 class="card-header"> Chitter </h3>
-                <div class="card-body">
-                    <h1> Join Chitter </h1>
-                    <h2> <%= flash[:notice] %> </h2>
-                    <br>
-                    <span>
-                      <form action="/users" method="post" >
-                        <input type="name" name="name" placeholder="Name" id="name" />
-                        <input type="email" name="email" placeholder="Email" id="email" />
-                        <input type="password" name="password" placeholder="Password" id="password" />
-                        <input type="submit" value="Submit" class="btn btn-warning" id="submit" />
-                      </form>
-                    </span>
-                </div>
+                <span>
+                    <form action="/users" method="post" >
+                    <input type="name" name="name" placeholder="Name" id="name" />
+                    <input type="email" name="email" placeholder="Email" id="email" />
+                    <input type="password" name="password" placeholder="Password" id="password" />
+                    <input type="submit" value="Submit" class="btn btn-warning" id="submit" />
+                    </form>
+                </span>
             </div>
         </div>
+    </div>
+    <footer style="margin-top: 24%; margin-left: 10px;">
+        <p style="align-self: center;">© 2019 Copyright: Marcin Balejko</p>
+    </footer>
     </body>
 </html>
+
+
+
+
 
 
 

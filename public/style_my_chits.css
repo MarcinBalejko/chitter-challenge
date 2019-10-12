@@ -3,7 +3,7 @@ body{
     background-position: center; 
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 115vh;
+    /* background-size: 115vh; */
     padding: 40px; 
     font-family: 'Cookie';
 }
