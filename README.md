@@ -9,7 +9,7 @@ Tools and technologies used:
 * PostgreSQL
 * RSpec / Capybara
 * HTML / CSS
-* Bootswatch
+* Bootstrap
 
 **Aiming for:**
 
@@ -18,3 +18,18 @@ Tools and technologies used:
 * User interface which resembles original Twitter ✔
 
 -----
+
+|   Project    |   Description    |
+|:------------:|:----------------:|
+|Main Page| ![signin](public/images/1.1.png)|
+|User can sign in| ![signin](public/images/1.2.png)|
+|User can sign up| ![signin](public/images/1.3.png)|
+|Users can set their passwords| ![signin](public/images/1.4.png)|
+|User can add chits on the board| ![signin](public/images/1.6.png)|
+|Creating a chit| ![signin](public/images/1.7.png)|
+|User's chits appear on the board| ![signin](public/images/1.8.png)|
+|User's chits can be commented by their author and other users| ![signin](public/images/1.9.png)|
+|Comments appear in the comment section of each chit| ![signin](public/images/1.10.png)|
+|User can view, edit and delete his own chits and comments on 'My Chits' section | ![signin](public/images/1.12.png)|
+|Editing a comment| ![signin](public/images/1.11.png)|
+
