@@ -1,54 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
-       <!-- > <link href="<%= url('/style_main_page.css') %>" rel="stylesheet" type="text/css" > -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Main page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+        <link rel="stylesheet" href="style-view-main.css">
+        <title>Main</title>
     </head>
-    <body style="background-image: url(http://www.cashadvance6online.com/data/archive/img/3110503676.jpeg);">
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">
-        Chitter
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor01">
-         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/sessions/new">Sign in</a>         
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/users/new">Sign up</a>
-            </li>
-         </ul>
+    <body>
+        <div class="background">
+            <!-- Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/chat.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav mr-auto">
+                       
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sessions/new">Board</a>         
+                        </li>        
+                    </ul>
+                </div>
+            </nav>
+            <!-- Jumbotron -->
+            <div class="jumbotron">
+                <h1 class="display-3">Lorem, Ipsum!</h1>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <hr class="my-4">
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <!--Footer-->
+            <footer class="page-footer font-small special-color-dark pt-4">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3 footer">© 2018 Copyright:
+                <a href="https://github.com/MarcinBalejko?tab=repositories" class="hlink"> Marcin Balejko</a>
+            </div>
+            </footer>
+            </div>
         </div>
-    </nav>
-        <br>
-        <div class="jumbotron" style=" opacity: 0.71; ">
-            <h1 class="display-3">Welcome to Chitter!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            
-        </div>
-
-    <footer style="margin-top: 24%; margin-left: 10px;">
-        <p style="align-self: center;">© 2019 Copyright: Marcin Balejko</p>
-    </footer>
-   
     </body>
 </html>
 

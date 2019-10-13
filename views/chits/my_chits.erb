@@ -1,101 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
-    <link href="<%= url('/style_my_chits.css') %>" rel="stylesheet" type="text/css" >
-    <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
-    <title>Chits</title>
-  </head>
-  <body>
-      <div class="col-md-6 card mx-auto big-card">
-        <br>
-        <h3 id="your-bookmarks" class="card-header">
-          Your Chits, <%= @user.name %>
-        </h3>
-        <span>
-        <form action="/chits" method="get"> 
-          <input type="submit" class="submitLink" value="Main Page" style="font-size: 30px;  font-family: 'Cookie', cursive;" />
-        </form>
-        <br>
-        <form action="/sessions/destroy" method="post">
-          <input type="submit" class="submitLink" value="Sign out" style="font-size: 30px;  font-family: 'Cookie', cursive;" />
-        </form>
-        </span>
-        <div class="card-body">
-          <% if @chits != nil %>
-            <% @chits.each do |chit| %>
-                <% if chit.author_id == @user.id %>
-                
-                <br>
-                <div id="small-card" class="col-md-10 card mx-auto">
-                    <br>
-                    <h3 id="header-title" class="card-header">(<%= chit.time %>) <%= chit.author_name %> ~ says:</h3>
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        Message:
-                        
-                        <ul class="comment-style">
-                            <span>
-                                <li class="comment-position">   
-                                    <%= chit.text %> 
-                                </li>
-                            </span>
-                        </ul> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+        <link href="<%= url('/style-view-board.css') %>" rel="stylesheet" type="text/css" >
+        <title>My Chits</title>
+    </head>
+    <body class="background">
+        <!-- Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">
+                <img src="https://img.icons8.com/cute-clipart/64/000000/chat.png">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="font-size: 15px;">My Chits</a>  <!-- too high ? -->
                     </li>
 
-                    <li class="list-group-item">
-                    Comments:
-                    <% if chit.comments.length > 0 %>
-                      <ul class="comment-style">
-                        <% chit.comments.each do |comment| %>
-                          <span>
-                            <li class="comment-position">   
-                              <form action="/chits/my/<%= comment.id %>/comments" method="post">
-                                <%= comment.comment_author %>~Says: <%= comment.text %>
-                                <input type='hidden' name='_method' value='DELETE' />
-                                <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
-                              </form>
-                            </li>
-                          </span>
-                        <% end %>
-                      </ul>
-                    <% end %> 
-                  </li>
-                
-                    <div id="buttons" class="card-body">
-                        <span>
-                        <a href="#" class="card-link">
-                          <form action="/chits/<%= chit.id %>/comments/new" method="get">
-                            <input type="submit" class="submitLink" value="Comment" style="font-size: 20px; font-family: 'Cookie', cursive;"/>
-                          </form>
-                        </a>
-                        <a  href="#" class="card-link">
-                            <form action="/chits/<%= chit.id %>/edit" method="get">
-                            <input type="submit" class="submitLink" value="Edit" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
-                            </form>
-                        </a>
-                        <a  href="#" class="card-link">
-                            <form action="/chits/<%= chit.id %>" method="post">
-                            <input type='hidden' name='_method' value='DELETE' />
-                            <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
-                            </form>
-                        </a>
-                        <span>
-                    </div>
-                    </div>
-                    <br>
-                <%end%>
-            <%end%>
-          <%end%> 
-        <br>
-        </div>
-        <div id="footer" class="card-footer text-muted">
-          <span>Created by ~ </span><span> Marcin Balejko &copy;</span> 
-        </div>
+                    <li class="nav-item">
+                      <form action="/chits" method="get">
+                        <input type="submit" class="nav-link" value="Board" style="font-size: 15px; background-color: transparent; border: none;" />
+                      </form>
+                    </li>
+
+                    <li class="nav-item">
+                      <form action="/chits/new" method="get"> 
+                        <input type="submit" class="nav-link" value="Add Chit" style="font-size: 15px; background-color: transparent; border: none;" />
+                      </form>
+                    </li>
+
+                    <li class="nav-item">
+                      <form action="/sessions/destroy" method="post">
+                        <input type="submit" class="nav-link" value="Sign out" style="font-size: 15px; background-color: transparent; border: none;" />
+                      </form>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
       <br>
-    </div>
-  </body>
-</html>
+      <br>
+
+
+      <% if @chits != nil %>
+        <% @chits.each do |chit| %>
+          <% if chit.author_id == @user.id %>
+            <!-- Card holding form-->
+            <div class="col-md-4 mx-auto">
+                <div class="card mb-3">
+                    <h3 class="card-header">(<%= chit.time %>) <%= chit.author_name %> ~ says:</h3>
+                    <div class="card-body">
+                        <p class="card-text"><%= chit.text %></p>
+                    </div>
+                      <li class="list-group-item">
+                        Comments:
+                        <% if chit.comments.length > 0 %>
+                          <ul class="comment-style">
+                            <% chit.comments.each do |comment| %>
+                              <span>
+                                <li class="comment-position">   
+                                  <form action="/chits/<%= comment.id %>/comments" method="post">
+                                    <%= comment.comment_author %>~Says: <%= comment.text %> 
+                                  </form>
+                                </li>
+                              </span>
+                            <% end %>
+                          </ul>
+                        <% end %> 
+                      </li>
+                      <div class="card-footer text-muted">
+                        <div class="card-body" style="text-align: center; display: inline;"> <!-- ?why doesnt work? -->
+
+                        <span>
+                          <form action="/chits/<%= chit.id %>/comments/new" method="get">
+                            <input type="submit" class="card-link" value="Comment" style="font-size: 20px;"/>
+                          </form>
+                          <form action="/chits/<%= chit.id %>/edit" method="get">
+                            <input type="submit" class="card-link" value="Edit" style="font-size: 20px;" />
+                          </form>
+                          <form action="/chits/<%= chit.id %>" method="post">
+                            <input type='hidden' name='_method' value='DELETE' />
+                            <input type="submit" class="card-link" value="Delete" style="font-size: 20px;" />
+                          </form>
+                        </span>
+
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          <%end%>
+        <%end%>
+      <%end%>
+
+
+      <!-- Footer -->
+      <footer class="page-footer font-small special-color-dark pt-4">
+      <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 footer">© 2018 Copyright:
+            <a href="https://github.com/MarcinBalejko?tab=repositories" class="hlink"> Marcin Balejko</a> <!-- problem -->
+        </div>
+      </footer>
+    <br>
+</body>
