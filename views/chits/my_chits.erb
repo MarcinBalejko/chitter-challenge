@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
-        <link href="<%= url('/style-view-board.css') %>" rel="stylesheet" type="text/css" >
+        <link href="<%= url('/style_my_chits.css') %>" rel="stylesheet" type="text/css" >
         <title>My Chits</title>
     </head>
     <body class="background">
@@ -41,19 +41,17 @@
             </div>
         </nav>
       <br>
-      <br>
-
-
+    <div class="container">
       <% if @chits != nil %>
         <% @chits.each do |chit| %>
           <% if chit.author_id == @user.id %>
         <!-- Card holding form-->
-            <div class="col-md-4 mx-auto">
-                <div class="card mb-3">
-                    <h3 class="card-header">(<%= chit.time %>) <%= chit.author_name %> ~ says:</h3>
-                    <div class="card-body">
-                        <p class="card-text"><%= chit.text %></p>
-                    </div>
+              <div class="col-md-4 mx-auto">
+                <div id="fade-in" class="card mb-3 content">
+                  <h3 class="card-header">(<%= chit.time %>) <%= chit.author_name %> ~ says:</h3>
+                  <div class="card-body">
+                      <p class="card-text"><%= chit.text %></p>
+                  </div>
 
                     <li class="list-group-item">
                       Comments:
@@ -74,59 +72,34 @@
                       <% end %> 
                     </li>
                     <div class="card-footer text-muted">
-                      <div class="card-body" style="display: inline; align-content: center;"> <!-- ? -->
-                      <a  href="#" class="card-link">
-                        <form action="/chits/<%= chit.id %>/comments/new" method="get">
-                          <input type="submit" class="card-link" value="Comment" style="font-size: 20px;"/>
-                        </form>
-                      </a>
-                      <a  href="#" class="card-link">
-                        <form action="/chits/<%= chit.id %>/edit" method="get">
-                              <input type="submit" class="submitLink" value="Edit" style="font-size: 20px;" />
-                        </form>
-                      </a>
-                      <a  href="#" class="card-link">
-                        <form action="/chits/<%= chit.id %>" method="post">
-                            <input type='hidden' name='_method' value='DELETE' />
-                            <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;" />
-                        </form>
-                      </a>
+                      <div id="buttons" class="card-body">
+                        <span>
+                          <a  href="#" class="card-link">
+                            <form action="/chits/<%= chit.id %>/comments/new" method="get">
+                              <input type="submit" class="card-link submitLink" value="Comment" style="font-size: 20px;"/>
+                            </form>
+                          </a>
+                          <a  href="#" class="card-link">
+                            <form action="/chits/<%= chit.id %>/edit" method="get">
+                                  <input type="submit" class="submitLink" value="Edit" style="font-size: 20px;" />
+                            </form>
+                          </a>
+                          <a  href="#" class="card-link">
+                            <form action="/chits/<%= chit.id %>" method="post">
+                                <input type='hidden' name='_method' value='DELETE' />
+                                <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;" />
+                            </form>
+                          </a>
+                        </span>
                       </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-            
-
-
-                <!--
-                    <div id="buttons" class="card-body">
-                        <span>
-                        <a href="#" class="card-link">
-                          <form action="/chits/<%= chit.id %>/comments/new" method="get">
-                            <input type="submit" class="submitLink" value="Comment" style="font-size: 20px; font-family: 'Cookie', cursive;"/>
-                          </form>
-                        </a>
-                        <a  href="#" class="card-link">
-                            <form action="/chits/<%= chit.id %>/edit" method="get">
-                              <input type="submit" class="submitLink" value="Edit" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
-                            </form>
-                        </a>
-                        <a  href="#" class="card-link">
-                            <form action="/chits/<%= chit.id %>" method="post">
-                            <input type='hidden' name='_method' value='DELETE' />
-                            <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
-                            </form>
-                        </a>
-                        <span>
-                    </div>  -->
-
-                    </div>
-                    <br>
+                  <br>
                 <%end%>
             <%end%>
           <%end%> 
         <br>
-        </div>
       <!-- Footer -->
       <footer class="page-footer font-small special-color-dark pt-4">
       <!-- Copyright -->
@@ -134,5 +107,5 @@
             <a href="https://github.com/MarcinBalejko?tab=repositories" class="hlink"> Marcin Balejko</a> <!-- problem -->
         </div>
       </footer>
-    <br>
+    </div>
 </body>

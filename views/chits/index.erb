@@ -41,44 +41,43 @@
             </div>
         </nav>
       <br>
-      <br>
-
-
+    <div class="container">
       <% if @chits != nil %>
         <% @chits.each do |chit| %>
         <!-- Card holding form-->
             <div class="col-md-4 mx-auto">
-                <div class="card mb-3">
-                    <h3 class="card-header">(<%= chit.time %>) <%= chit.author_name %> ~ says:</h3>
-                    <div class="card-body">
-                        <p class="card-text"><%= chit.text %></p>
-                    </div>
+              <div id="fade-in" class="card mb-3 content">
+                  <h3 class="card-header">(<%= chit.time %>) <%= chit.author_name %> ~ says:</h3>
+                  <div class="card-body">
+                      <p class="card-text"><%= chit.text %></p>
+                  </div>
 
-                    <li class="list-group-item">
-                      Comments:
-                      <% if chit.comments.length > 0 %>
-                        <ul class="comment-style">
-                          <% chit.comments.each do |comment| %>
-                            <span>
-                              <li class="comment-position">   
-                                <form action="/chits/<%= comment.id %>/comments" method="post">
-                                  <%= comment.comment_author %>~Says: <%= comment.text %> 
-                                </form>
-                              </li>
-                            </span>
-                          <% end %>
-                        </ul>
-                      <% end %> 
-                    </li>
-                    <div class="card-footer text-muted">
-                      <div class="card-body"> <!-- ? -->
-                        <form action="/chits/<%= chit.id %>/comments/new" method="get">
-                          <input type="submit" class="card-link" value="Comment" style="font-size: 20px;"/>
-                        </form>
+                  <li class="list-group-item">
+                    Comments:
+                    <% if chit.comments.length > 0 %>
+                      <ul class="comment-style">
+                        <% chit.comments.each do |comment| %>
+                          <span>
+                            <li class="comment-position">   
+                              <form action="/chits/<%= comment.id %>/comments" method="post">
+                                <%= comment.comment_author %>~Says: <%= comment.text %> 
+                              </form>
+                            </li>
+                          </span>
+                        <% end %>
+                      </ul>
+                    <% end %> 
+                  </li>
+                  <div class="card-footer text-muted">
+                    <div class="card-body"> <!-- ? -->
+                      <form action="/chits/<%= chit.id %>/comments/new" method="get">
+                        <input type="submit" class="card-link submitLink" value="Comment" style="font-size: 20px;"/>
+                      </form>
                     </div>
-                    </div>
-                </div>
+                  </div>
+              </div>
             </div>
+            <br>
             <%end%>
           <%end%>
 
@@ -89,7 +88,7 @@
             <a href="https://github.com/MarcinBalejko?tab=repositories" class="hlink"> Marcin Balejko</a> <!-- problem -->
         </div>
       </footer>
-    <br>
+    </div>
 </body>
 
 

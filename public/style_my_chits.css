@@ -1,68 +1,96 @@
-body{
-    background-image: url(https://www.artycraftykids.com/wp-content/uploads/2017/08/Bookmarks-1-2.jpg);
-    background-position: center; 
+body, html {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+
+#card{
+    border: 2px;
+    border-style: solid;
+    border-color: white;
+    padding: 2%;
+}
+
+.container {
+    min-width: 100vw;
+    min-height:85vh;
+    position: relative;
+}
+
+.background{
+    height: 100%;
+    background-image: url("http://www.cashadvance6online.com/data/archive/img/3110503676.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* background-size: 115vh; */
-    padding: 40px; 
-    font-family: 'Cookie';
+    filter: sepia(30%);
+}
+
+.navbar{
+    background-image: linear-gradient(to right,#4e4d4d, #1C1C1C, #1A1A1A);
+}
+
+.hlink{
+    color: white;
+}
+.hlink:hover{
+    color: red;
+    text-decoration: none;
+    
+}
+
+.jumbotron{
+    background-color: rgb(236, 236, 255, 0.8);
+}
+
+.content{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.678);
+    transition: 0.3s;
+}
+.content:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+span{
+    text-align: center;
+    display: inline-flex;
 }
 
 .submitLink {
     background-color: transparent;
     border: none;
-    color: whitesmoke;
+    color: rgb(240, 157, 4);
+}
+.submitLink:hover{
+    color: rgb(192, 127, 7);
+    position: relative; 
+    top: -5px;
 }
 
-.big-card{
-    overflow: scroll;
-    background-color: rgba(0, 0, 0, 0.7);
-    margin-top: 20vh;
-}
-
-#your-bookmarks{
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-image: linear-gradient(to right,#4e4d4d, #1C1C1C, #1A1A1A);
     text-align: center;
 }
-#header-title{
-    text-align: center;
-}
 
-#small-card{
-    box-shadow: 5px 10px rgba(26, 25, 25, 0.801);
-}
-
-#list-group-item-tags{
-    border-top: 1px solid rgba(0,0,0,0.6);
-    border-bottom: 1px solid rgba(0,0,0,0.6);
-}
-
-.comment-style{
-    list-style-type: none;
-}
-.comment-position{
-    text-align: left;
-}
-
-#buttons{
-    text-align: center;
-    font-size: 25px;
-}
-
-#footer{
-    text-align: center;
-    font-size: 25px;
-}
-
-form{
-    margin: 0%;
-    max-width: 50px;
-    display: inline;
-}
-
-span{
-    text-align: center;
-    display: inline;
+#fade-in {
+    animation: fadeIn ease 2s;
 }
 
 
-@import url('https://fonts.googleapis.com/css?family=Cookie&display=swap');
+@keyframes fadeIn{
+    0% {
+        opacity:0;
+    }
+    30% {
+        opacity:0.9;
+    }
+    100% {
+        opacity:1;
+    }
+}
