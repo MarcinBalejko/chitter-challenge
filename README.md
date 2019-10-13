@@ -33,3 +33,5 @@ Tools and technologies used:
 |User can view, edit and delete his own chits and comments on 'My Chits' section | ![signin](public/images/1.12.png)|
 |Editing a comment| ![signin](public/images/1.11.png)|
 
+
+-----
