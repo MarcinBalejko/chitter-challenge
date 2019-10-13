@@ -1,30 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
-        <link href="<%= url('/style_chits_new.css') %>" rel="stylesheet" type="text/css" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>New Chit</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+        <link href="<%= url('/style-view-signin.css') %>" rel="stylesheet" type="text/css" > 
+        
+        <title>SignIn</title>
     </head>
-    <body style="background-image: url(https://brokeassstuart-9uzlt3u.netdna-ssl.com/wp-content/pictsnShit/2013/04/bookmark-wallpaper.jpg?fbclid=IwAR3qksDvjy5w9erKWj69rHincMExY3QCE4J8bC_k90qtKhUFncW_MBQpHDk);">
-        <div class="col-md-5 card mx-auto" id="col-md-5" >
-            <div class="card-container" >
-            <br>
-                <h3 class="card-header" > Chitter </h3>
-                <div class="card-body">
-                    <h1> Add a new Chit </h1>
-                    <h2> <%= flash[:notice] %> </h2>
-                    <br>
-                    <span>
-                      <form action="/chits" method="post" >
-                        <input type="text" name="text" placeholder="Text" id="text" />
-                        <input type="submit" value="Submit" class="btn btn-warning" id="submit" />
-                      </form>
-                    </span>
+    <body>
+        <div class="background">
+            <!-- Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/chat.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Add Chit <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                        <form action="/chits" method="get"> 
+                            <input type="submit" class="nav-link" value="Board" style="font-size: 15px; background-color: transparent; border: none;" />
+                        </form>
+                        </li>
+                        <li class="nav-item">
+                        <form action="/chits/my" method="get">
+                            <input type="submit" class="nav-link" value="My Chits" style="font-size: 15px; background-color: transparent; border: none;" />
+                        </form>
+                        </li>
+                        <li class="nav-item">
+                        <form action="/sessions/destroy" method="post">
+                            <input type="submit" class="nav-link" value="Sign Out" style="font-size: 15px; background-color: transparent; border: none;" />
+                        </form>
+                        </li> 
+                    </ul>
                 </div>
+            </nav>
+            <!-- Jumbotron -->
+            <div class="jumbotron">
+            <!-- Card holding form-->
+                <div id="card" class="col-md-6 mx-auto">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" >Add Chit</a>
+                        </li>      
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active show" id="home">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+            <!-- Form -->
+                    <div class="form-group">
+                        <form action="/chits" method="post" >
+                            <input class="form-control"  type="text" name="text" placeholder="Text..." id="password" />
+                            <br>
+                            <input type="submit" value="Submit" class="btn btn-block btn-outline-primary" id="sign-in" >
+                        </form>
+                    </div>
+            </div>
+            <!-- Footer -->
+            <footer class="page-footer font-small special-color-dark pt-4">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3 footer">© 2018 Copyright:
+                <a href="https://github.com/MarcinBalejko?tab=repositories" class="hlink"> Marcin Balejko</a>
+            </div>
+            </footer>
             </div>
         </div>
     </body>

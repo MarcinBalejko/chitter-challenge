@@ -58,6 +58,7 @@ class Chitter < Sinatra::Base
     Comment.delete(id: params[:id])
     redirect '/chits'
   end
+  
 
 
 

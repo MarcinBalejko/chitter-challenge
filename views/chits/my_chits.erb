@@ -19,29 +19,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="font-size: 15px;">My Chits</a>  <!-- too high ? -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">My Chits <span class="sr-only">(current)</span></a>
                     </li>
-
                     <li class="nav-item">
                       <form action="/chits" method="get">
                         <input type="submit" class="nav-link" value="Board" style="font-size: 15px; background-color: transparent; border: none;" />
                       </form>
                     </li>
-
                     <li class="nav-item">
                       <form action="/chits/new" method="get"> 
                         <input type="submit" class="nav-link" value="Add Chit" style="font-size: 15px; background-color: transparent; border: none;" />
                       </form>
-                    </li>
-
+                    </li>                   
                     <li class="nav-item">
                       <form action="/sessions/destroy" method="post">
-                        <input type="submit" class="nav-link" value="Sign out" style="font-size: 15px; background-color: transparent; border: none;" />
+                        <input type="submit" class="nav-link" value="Sign Out" style="font-size: 15px; background-color: transparent; border: none;" />
                       </form>
-                    </li>
-
+                    </li>         
                 </ul>
             </div>
         </nav>
@@ -52,54 +47,86 @@
       <% if @chits != nil %>
         <% @chits.each do |chit| %>
           <% if chit.author_id == @user.id %>
-            <!-- Card holding form-->
+        <!-- Card holding form-->
             <div class="col-md-4 mx-auto">
                 <div class="card mb-3">
                     <h3 class="card-header">(<%= chit.time %>) <%= chit.author_name %> ~ says:</h3>
                     <div class="card-body">
                         <p class="card-text"><%= chit.text %></p>
                     </div>
-                      <li class="list-group-item">
-                        Comments:
-                        <% if chit.comments.length > 0 %>
-                          <ul class="comment-style">
-                            <% chit.comments.each do |comment| %>
-                              <span>
-                                <li class="comment-position">   
-                                  <form action="/chits/<%= comment.id %>/comments" method="post">
-                                    <%= comment.comment_author %>~Says: <%= comment.text %> 
-                                  </form>
-                                </li>
-                              </span>
-                            <% end %>
-                          </ul>
-                        <% end %> 
-                      </li>
-                      <div class="card-footer text-muted">
-                        <div class="card-body" style="text-align: center; display: inline;"> <!-- ?why doesnt work? -->
 
-                        <span>
-                          <form action="/chits/<%= chit.id %>/comments/new" method="get">
-                            <input type="submit" class="card-link" value="Comment" style="font-size: 20px;"/>
-                          </form>
-                          <form action="/chits/<%= chit.id %>/edit" method="get">
-                            <input type="submit" class="card-link" value="Edit" style="font-size: 20px;" />
-                          </form>
-                          <form action="/chits/<%= chit.id %>" method="post">
+                    <li class="list-group-item">
+                      Comments:
+                      <% if chit.comments.length > 0 %>
+                        <ul class="comment-style">
+                          <% chit.comments.each do |comment| %>
+                            <span>
+                              <li class="comment-position">   
+                                <form action="/chits/<%= comment.id %>/comments" method="post">
+                                  <%= comment.comment_author %>~Says: <%= comment.text %>
+                                  <input type='hidden' name='_method' value='DELETE' />
+                                  <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;"/> 
+                                </form>
+                              </li>
+                            </span>
+                          <% end %>
+                        </ul>
+                      <% end %> 
+                    </li>
+                    <div class="card-footer text-muted">
+                      <div class="card-body" style="display: inline; align-content: center;"> <!-- ? -->
+                      <a  href="#" class="card-link">
+                        <form action="/chits/<%= chit.id %>/comments/new" method="get">
+                          <input type="submit" class="card-link" value="Comment" style="font-size: 20px;"/>
+                        </form>
+                      </a>
+                      <a  href="#" class="card-link">
+                        <form action="/chits/<%= chit.id %>/edit" method="get">
+                              <input type="submit" class="submitLink" value="Edit" style="font-size: 20px;" />
+                        </form>
+                      </a>
+                      <a  href="#" class="card-link">
+                        <form action="/chits/<%= chit.id %>" method="post">
                             <input type='hidden' name='_method' value='DELETE' />
-                            <input type="submit" class="card-link" value="Delete" style="font-size: 20px;" />
-                          </form>
-                        </span>
-
-                        </div>
+                            <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;" />
+                        </form>
+                      </a>
                       </div>
-                  </div>
-              </div>
-          <%end%>
-        <%end%>
-      <%end%>
+                    </div>
+                </div>
+            </div>
+            
 
 
+                <!--
+                    <div id="buttons" class="card-body">
+                        <span>
+                        <a href="#" class="card-link">
+                          <form action="/chits/<%= chit.id %>/comments/new" method="get">
+                            <input type="submit" class="submitLink" value="Comment" style="font-size: 20px; font-family: 'Cookie', cursive;"/>
+                          </form>
+                        </a>
+                        <a  href="#" class="card-link">
+                            <form action="/chits/<%= chit.id %>/edit" method="get">
+                              <input type="submit" class="submitLink" value="Edit" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
+                            </form>
+                        </a>
+                        <a  href="#" class="card-link">
+                            <form action="/chits/<%= chit.id %>" method="post">
+                            <input type='hidden' name='_method' value='DELETE' />
+                            <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;  font-family: 'Cookie', cursive;" />
+                            </form>
+                        </a>
+                        <span>
+                    </div>  -->
+
+                    </div>
+                    <br>
+                <%end%>
+            <%end%>
+          <%end%> 
+        <br>
+        </div>
       <!-- Footer -->
       <footer class="page-footer font-small special-color-dark pt-4">
       <!-- Copyright -->
