@@ -1,9 +1,11 @@
 def sign_up
-    visit('/')
-      click_button 'Sign up'
+    visit('/sessions/new')
+    visit('/users/new')
+      
+      fill_in('name', with: 'User')
       fill_in('email', with: 'user@gmail.com')
       fill_in('password', with: 'testpassword')
-      click_button 'Submit'
+      click_button 'Sign up'
 end
 
 def add_one_chit

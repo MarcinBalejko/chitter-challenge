@@ -10,7 +10,7 @@ feature 'entering my chits page' do
     sign_up
     add_one_chit
     click_button('My Chits')
-    click_button('Main Page')
+    click_button('Board')
 
     expect(current_path).to eq '/chits'
     expect(page).to have_content "Test Chit 1"
