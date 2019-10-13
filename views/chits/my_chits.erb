@@ -24,17 +24,17 @@
                     </li>
                     <li class="nav-item">
                       <form action="/chits" method="get">
-                        <input type="submit" class="nav-link" value="Board" style="font-size: 15px; background-color: transparent; border: none;" />
+                        <input type="submit" class="nav-link" value="Board" id="navbar-markers"  />
                       </form>
                     </li>
                     <li class="nav-item">
                       <form action="/chits/new" method="get"> 
-                        <input type="submit" class="nav-link" value="Add Chit" style="font-size: 15px; background-color: transparent; border: none;" />
+                        <input type="submit" class="nav-link" value="Add Chit" id="navbar-markers" />
                       </form>
                     </li>                   
                     <li class="nav-item">
                       <form action="/sessions/destroy" method="post">
-                        <input type="submit" class="nav-link" value="Sign Out" style="font-size: 15px; background-color: transparent; border: none;" />
+                        <input type="submit" class="nav-link" value="Sign Out" id="navbar-markers" />
                       </form>
                     </li>         
                 </ul>
@@ -63,7 +63,7 @@
                                 <form action="/chits/<%= comment.id %>/comments" method="post">
                                   <%= comment.comment_author %>~Says: <%= comment.text %>
                                   <input type='hidden' name='_method' value='DELETE' />
-                                  <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;"/> 
+                                  <input type="submit" class="submitLink" value="Delete" id="sub-buttons"/> 
                                 </form>
                               </li>
                             </span>
@@ -76,18 +76,18 @@
                         <span>
                           <a  href="#" class="card-link">
                             <form action="/chits/<%= chit.id %>/comments/new" method="get">
-                              <input type="submit" class="card-link submitLink" value="Comment" style="font-size: 20px;"/>
+                              <input type="submit" class="card-link submitLink" value="Comment" id="sub-buttons" />
                             </form>
                           </a>
                           <a  href="#" class="card-link">
                             <form action="/chits/<%= chit.id %>/edit" method="get">
-                                  <input type="submit" class="submitLink" value="Edit" style="font-size: 20px;" />
+                                  <input type="submit" class="submitLink" value="Edit" id="sub-buttons" />
                             </form>
                           </a>
                           <a  href="#" class="card-link">
                             <form action="/chits/<%= chit.id %>" method="post">
                                 <input type='hidden' name='_method' value='DELETE' />
-                                <input type="submit" class="submitLink" value="Delete" style="font-size: 20px;" />
+                                <input type="submit" class="submitLink" value="Delete" id="sub-buttons" />
                             </form>
                           </a>
                         </span>

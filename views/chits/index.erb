@@ -20,21 +20,21 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item" >
-                        <a class="nav-link" href="#" style="font-size: 15px;">Board</a>  <!-- too high ? -->
+                        <a class="nav-link" href="#" id="board">Board</a>  <!-- too high ? -->
                     </li>
                     <li class="nav-item">
                       <form action="/chits/new" method="get"> 
-                        <input type="submit" class="nav-link" value="Add Chit" style="font-size: 15px; background-color: transparent; border: none;" />
+                        <input type="submit" class="nav-link"  id="navbar-markers" value="Add Chit" />
                       </form>
                     </li>
                     <li class="nav-item">
                       <form action="/chits/my" method="get">
-                        <input type="submit" class="nav-link" value="My Chits" style="font-size: 15px; background-color: transparent; border: none;" />
+                        <input type="submit" class="nav-link" id="navbar-markers" value="My Chits" />
                       </form>
                     </li>
                     <li class="nav-item">
                       <form action="/sessions/destroy" method="post">
-                        <input type="submit" class="nav-link" value="Sign Out" style="font-size: 15px; background-color: transparent; border: none;" />
+                        <input type="submit" class="nav-link" id="navbar-markers" value="Sign Out" />
                       </form>
                     </li>         
                 </ul>
@@ -71,7 +71,7 @@
                   <div class="card-footer text-muted">
                     <div class="card-body"> <!-- ? -->
                       <form action="/chits/<%= chit.id %>/comments/new" method="get">
-                        <input type="submit" class="card-link submitLink" value="Comment" style="font-size: 20px;"/>
+                        <input type="submit" class="card-link submitLink" value="Comment" id="comment" />
                       </form>
                     </div>
                   </div>

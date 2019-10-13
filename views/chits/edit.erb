@@ -55,9 +55,9 @@
                     <div class="form-group">
                         <form action="/chits/<%= @chit.id %>" method="post" >
                             <input type="hidden" name="_method" value="PATCH" />
-                            <input class="form-control"  type="text" name="text" value="<%= @chit.text %>" id="title" style="font-size: 20px;" placeholder="Comment..." id="password" />
+                            <input class="form-control"  type="text" name="text" value="<%= @chit.text %>" id="title"  placeholder="Comment..." id="password" />
                             <br>
-                            <input type="submit" value="Submit" class="btn btn-block btn-outline-primary" id="sign-in" style="font-size: 20px;" />
+                            <input type="submit" value="Submit" class="btn btn-block btn-outline-primary" id="sign-in" />
                         </form>
                     </div>
             </div>

@@ -82,6 +82,32 @@ span{
     animation: fadeIn ease 2s;
 }
 
+#sign_in{
+    font-size: 20px;
+}
+
+#password{
+    font-size: 20px;
+}
+
+#board{
+    font-size: 15px;
+}
+
+#navbar-markers{
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+}
+
+#comment{
+    font-size: 20px;
+}
+
+#sub-buttons{
+    font-size: 20px;
+}
+
 
 @keyframes fadeIn{
     0% {
