@@ -31,7 +31,7 @@ Tools and technologies used:
 |User's chits can be commented by their author and other users| ![signin](public/images/1.9.png)|
 |Comments appear in the comment section of each chit| ![signin](public/images/1.10.png)|
 |User can view, edit and delete his own chits and comments on 'My Chits' section | ![signin](public/images/1.12.png)|
-|Editing a comment| ![signin](public/images/1.11.png)|
+|Editing a chit| ![signin](public/images/1.11.png)|
 
 
 -----
