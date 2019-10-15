@@ -19,7 +19,7 @@ Tools and technologies used:
 
 -----
 
-|   Project    |   Description    |
+|   Description    |   Image    |
 |:------------:|:----------------:|
 |Main Page| ![signin](public/images/1.1.png)|
 |User can sign in| ![signin](public/images/1.2.png)|
