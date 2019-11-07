@@ -15,7 +15,7 @@ class Chit
   end
 
   def self.all
-    chits = DatabaseConnection.query('SELECT * FROM chits ORDER BY id ASC;')
+    chits = DatabaseConnection.query('SELECT * FROM chits ORDER BY id DESC;')
     chits.map do |chit|
       Chit.new(
         id: chit['id'],
